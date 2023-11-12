@@ -69,6 +69,8 @@ def compute_loss(experiences, gamma, q_net, target_net):
     loss = MSE(y_targets, q_values)
     return loss
 
+optimizer = Adam(learning_rate=ALPHA)
+
 def agent_learn(experiences, gamma, q_net, target_net, optimizer):
     with tf.GradientTape() as tape:
         loss = compute_loss(experiences, gamma, q_net, target_net)
